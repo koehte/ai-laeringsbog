@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Læringsbog — Koehte familien</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0f0e0c;--bg2:#1a1916;--bg3:#242320;--card:#1e1d1b;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#f0ede6;--muted:#8a877f;
+  --far:#e8c97a;--lucca:#d475a8;--soren:#5b9ef5;--teal:#6ecfb0;--coral:#e87d5a;
+  --radius:14px;--radius-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);padding:0 1.2rem;height:56px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.nav-logo{font-family:'Fraunces',serif;font-size:16px;color:var(--far);letter-spacing:-0.02em;white-space:nowrap;}
+.profile-switcher{display:flex;background:var(--bg3);border-radius:100px;padding:3px;gap:2px;flex-shrink:0;}
+.profile-btn{padding:5px 12px;border-radius:100px;font-size:12px;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.profile-btn.af{background:var(--far);color:var(--bg);font-weight:500;}
+.profile-btn.al{background:var(--lucca);color:#fff;font-weight:500;}
+.profile-btn.as{background:var(--soren);color:#fff;font-weight:500;}
+.nav-links{display:flex;gap:3px;}
+.nav-link{padding:6px 10px;border-radius:var(--radius-sm);font-size:13px;color:var(--muted);cursor:pointer;border:none;background:none;transition:all 0.2s;}
+.nav-link:hover,.nav-link.active{background:var(--bg3);color:var(--text);}
+
+.main{padding-top:56px;}
+.section{display:none;min-height:calc(100vh - 56px);padding:2rem 1.4rem;max-width:840px;margin:0 auto;}
+.section.active{display:block;}
+
+.hero{padding:2.5rem 1rem 1.5rem;text-align:center;max-width:600px;margin:0 auto 2rem;}
+.hero-eyebrow{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--far);margin-bottom:1rem;}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,50px);font-weight:300;line-height:1.12;color:var(--text);letter-spacing:-0.03em;margin-bottom:1rem;}
+.hero-title em{font-style:italic;color:var(--far);}
+.hero-sub{font-size:15px;color:var(--muted);max-width:400px;margin:0 auto;}
+
+.race-box{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:1.2rem;}
+.race-title{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:1.2rem;}
+.race-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.race-label{font-size:13px;width:64px;flex-shrink:0;}
+.race-bg{flex:1;height:10px;background:var(--bg3);border-radius:100px;overflow:hidden;}
+.race-fill{height:100%;border-radius:100px;transition:width 0.6s cubic-bezier(0.4,0,0.2,1);}
+.race-fill.f{background:var(--far);}
+.race-fill.l{background:var(--lucca);}
+.race-fill.s{background:var(--soren);}
+.race-num{font-size:13px;font-weight:500;min-width:34px;text-align:right;}
+
+.stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.2rem;}
+.stat-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.1rem;}
+.stat-lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:.9rem;}
+.stat-row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:5px;}
+.stat-row span:last-child{font-weight:500;color:var(--text);}
+
+.card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.3rem;margin-bottom:1rem;}
+.card-lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:.8rem;}
+
+.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:300;letter-spacing:-0.02em;margin-bottom:.3rem;}
+.section-sub{font-size:13px;color:var(--muted);margin-bottom:1.4rem;}
+
+.wtabs{display:flex;gap:7px;margin-bottom:1.3rem;flex-wrap:wrap;}
+.wtab{padding:7px 16px;border-radius:100px;font-size:13px;border:0.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.wtab:hover{border-color:var(--border2);color:var(--text);}
+.wtab.a{border-color:var(--far);color:var(--bg);background:var(--far);}
+.wtab.al{border-color:var(--lucca);color:#fff;background:var(--lucca);}
+.wtab.as{border-color:var(--soren);color:#fff;background:var(--soren);}
+
+.week-info{margin-bottom:1.3rem;padding:1.1rem 1.3rem;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);}
+.week-info-title{font-family:'Fraunces',serif;font-size:19px;font-weight:300;}
+.week-info-desc{font-size:13px;color:var(--muted);margin-top:3px;}
+
+.days-grid{display:flex;flex-direction:column;gap:9px;}
+.day-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.3rem;transition:all 0.2s;position:relative;overflow:hidden;}
+.day-card:hover{border-color:var(--border2);}
+.day-card.done-all{border-color:rgba(110,207,176,0.3);}
+.day-card.done-all::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal);}
+.day-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;}
+.day-name{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.check-row{display:flex;gap:8px;align-items:center;}
+.chk{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border2);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);transition:all 0.2s;flex-shrink:0;flex-direction:column;gap:0;}
+.chk .lbl{font-size:8px;color:var(--muted);line-height:1;}
+.chk.cf{background:var(--far);border-color:var(--far);color:var(--bg);}
+.chk.cf .lbl{color:var(--bg);}
+.chk.cl{background:var(--lucca);border-color:var(--lucca);color:#fff;}
+.chk.cl .lbl{color:#fff;}
+.chk.cs{background:var(--soren);border-color:var(--soren);color:#fff;}
+.chk.cs .lbl{color:#fff;}
+.chk.disabled{opacity:0.4;cursor:default;}
+.day-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:5px;}
+.day-body{font-size:13px;color:var(--muted);line-height:1.7;}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px;}
+.day-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;}
+.day-link{font-size:12px;padding:5px 12px;border-radius:100px;border:0.5px solid var(--border2);color:var(--teal);background:rgba(110,207,176,0.08);text-decoration:none;transition:all 0.2s;}
+.day-link:hover{background:rgba(110,207,176,0.18);border-color:var(--teal);}
+.tag{font-size:10px;padding:2px 9px;border-radius:100px;border:0.5px solid;}
+.tag-begge{border-color:rgba(232,201,122,0.4);color:var(--far);background:rgba(232,201,122,0.08);}
+.tag-alle{border-color:rgba(110,207,176,0.4);color:var(--teal);background:rgba(110,207,176,0.08);}
+.tag-far{border-color:rgba(232,201,122,0.4);color:var(--far);background:rgba(232,201,122,0.08);}
+.tag-lucca{border-color:rgba(212,117,168,0.4);color:var(--lucca);background:rgba(212,117,168,0.08);}
+.tag-soren{border-color:rgba(91,158,245,0.4);color:var(--soren);background:rgba(91,158,245,0.08);}
+.tag-praksis{border-color:rgba(232,125,90,0.4);color:var(--coral);background:rgba(232,125,90,0.08);}
+
+.chat-box{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;height:490px;}
+.chat-hdr{padding:.8rem 1.2rem;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:9px;}
+.chat-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.chat-title{font-size:13px;font-weight:500;}
+.chat-status{font-size:11px;color:var(--teal);}
+.chat-msgs{flex:1;overflow-y:auto;padding:1.1rem;display:flex;flex-direction:column;gap:11px;}
+.msg{max-width:82%;}
+.msg.user{align-self:flex-end;}
+.msg.ai{align-self:flex-start;}
+.msg-bubble{padding:8px 12px;border-radius:13px;font-size:13px;line-height:1.6;}
+.msg.ai .msg-bubble{background:var(--bg3);color:var(--text);border-radius:13px 13px 13px 3px;}
+.msg-time{font-size:10px;color:var(--muted);margin-top:3px;padding:0 3px;}
+.msg.user .msg-time{text-align:right;}
+.chat-sugg{display:flex;gap:5px;flex-wrap:wrap;padding:0 1.1rem .7rem;}
+.sugg{font-size:11px;padding:4px 9px;border-radius:100px;border:0.5px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.sugg:hover{border-color:var(--far);color:var(--far);}
+.chat-ia{padding:.7rem 1.1rem;border-top:0.5px solid var(--border);display:flex;gap:7px;align-items:flex-end;}
+.chat-input{flex:1;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:8px 12px;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;resize:none;outline:none;max-height:90px;line-height:1.5;}
+.chat-input:focus{border-color:var(--far);}
+.chat-input::placeholder{color:var(--muted);}
+.send-btn{width:34px;height:34px;border-radius:var(--radius-sm);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:opacity 0.2s;}
+.send-btn:hover{opacity:.85;}.send-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+.quiz-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.5rem;}
+.quiz-q{font-size:16px;font-weight:500;margin-bottom:1.1rem;line-height:1.5;}
+.quiz-opts{display:flex;flex-direction:column;gap:7px;margin-bottom:1rem;}
+.qopt{padding:10px 13px;border-radius:var(--radius-sm);border:0.5px solid var(--border2);background:transparent;color:var(--text);font-size:13px;text-align:left;cursor:pointer;transition:all 0.2s;}
+.qopt:hover:not(:disabled){border-color:var(--far);color:var(--far);}
+.qopt.correct{border-color:var(--teal);background:rgba(110,207,176,0.1);color:var(--teal);}
+.qopt.wrong{border-color:var(--coral);background:rgba(232,125,90,0.1);color:var(--coral);}
+.qfb{font-size:13px;padding:9px 13px;border-radius:var(--radius-sm);margin-bottom:.8rem;display:none;}
+.qfb.show{display:block;}
+.qfb.ok{background:rgba(110,207,176,0.1);color:var(--teal);border:0.5px solid rgba(110,207,176,0.3);}
+.qfb.fail{background:rgba(232,125,90,0.1);color:var(--coral);border:0.5px solid rgba(232,125,90,0.3);}
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;}
+.quiz-counter{font-size:13px;color:var(--muted);}
+.score-card{text-align:center;padding:1.8rem;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);}
+.score-big{font-family:'Fraunces',serif;font-size:52px;font-weight:600;}
+
+.btn-p{padding:8px 18px;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;transition:opacity 0.2s;}
+.btn-p:hover{opacity:.85;}
+.btn-g{padding:8px 18px;background:transparent;border:0.5px solid var(--border2);border-radius:var(--radius-sm);color:var(--muted);font-size:13px;cursor:pointer;transition:all 0.2s;}
+.btn-g:hover{border-color:var(--text);color:var(--text);}
+
+.api-row{display:flex;gap:7px;}
+.api-inp{flex:1;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:8px 12px;color:var(--text);font-size:13px;outline:none;}
+.api-inp:focus{border-color:var(--far);}
+.api-btn{padding:8px 14px;background:var(--far);border:none;border-radius:var(--radius-sm);color:var(--bg);font-size:13px;font-weight:500;cursor:pointer;}
+.api-st{font-size:12px;margin-top:7px;}
+.api-st.ok{color:var(--teal);}.api-st.err{color:var(--coral);}
+
+.typing{display:flex;gap:4px;align-items:center;padding:7px 11px;}
+.typing span{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+
+@media(max-width:600px){
+  .stat-grid{grid-template-columns:1fr;}
+  .info-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">AI Læringsbog ✦</div>
+  <div class="profile-switcher">
+    <button class="profile-btn af" id="btn-far" onclick="switchProfile('far')">👨 Far</button>
+    <button class="profile-btn" id="btn-lucca" onclick="switchProfile('lucca')">👧 Lucca</button>
+    <button class="profile-btn" id="btn-soren" onclick="switchProfile('soren')">🧑 Søren</button>
+  </div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showSection('hjem')">Hjem</button>
+    <button class="nav-link" onclick="showSection('plan')">Plan</button>
+    <button class="nav-link" onclick="showSection('chat')">Chat</button>
+    <button class="nav-link" onclick="showSection('quiz')">Quiz</button>
+    <button class="nav-link" onclick="showSection('inst')">⚙</button>
+  </div>
+</nav>
+
+<div class="main">
+
+  <div id="sec-hjem" class="section active">
+    <div class="hero">
+      <div class="hero-eyebrow">Koehte familien · 2026</div>
+      <h1 class="hero-title">Jeres rejse ind i <em>kunstig intelligens</em></h1>
+      <p class="hero-sub" id="hero-txt">30 minutter om dagen. 4 uger. Far, Lucca og Søren — sammen.</p>
+    </div>
+    <div class="race-box">
+      <div class="race-title">🏁 Hvem er foran?</div>
+      <div class="race-row">
+        <div class="race-label" style="color:var(--far);">👨 Far</div>
+        <div class="race-bg"><div class="race-fill f" id="rf" style="width:0%"></div></div>
+        <div class="race-num" style="color:var(--far);" id="rn-far">0/20</div>
+      </div>
+      <div class="race-row">
+        <div class="race-label" style="color:var(--lucca);">👧 Lucca</div>
+        <div class="race-bg"><div class="race-fill l" id="rl" style="width:0%"></div></div>
+        <div class="race-num" style="color:var(--lucca);" id="rn-lucca">0/20</div>
+      </div>
+      <div class="race-row">
+        <div class="race-label" style="color:var(--soren);">🧑 Søren</div>
+        <div class="race-bg"><div class="race-fill s" id="rs" style="width:0%"></div></div>
+        <div class="race-num" style="color:var(--soren);" id="rn-soren">0/20</div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-top:9px;" id="race-txt">Ingen har startet endnu — hvem tager første skridt?</div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card" style="border-color:rgba(232,201,122,0.2);">
+        <div class="stat-lbl" style="color:var(--far);">👨 Far</div>
+        <div class="stat-row"><span>Dage</span><span id="f-days">0</span></div>
+        <div class="stat-row"><span>Quiz</span><span id="f-quiz">0</span></div>
+        <div class="stat-row"><span>Chat</span><span id="f-chat">0</span></div>
+      </div>
+      <div class="stat-card" style="border-color:rgba(212,117,168,0.2);">
+        <div class="stat-lbl" style="color:var(--lucca);">👧 Lucca</div>
+        <div class="stat-row"><span>Dage</span><span id="l-days">0</span></div>
+        <div class="stat-row"><span>Quiz</span><span id="l-quiz">0</span></div>
+        <div class="stat-row"><span>Chat</span><span id="l-chat">0</span></div>
+      </div>
+      <div class="stat-card" style="border-color:rgba(91,158,245,0.2);">
+        <div class="stat-lbl" style="color:var(--soren);">🧑 Søren</div>
+        <div class="stat-row"><span>Dage</span><span id="s-days">0</span></div>
+        <div class="stat-row"><span>Quiz</span><span id="s-quiz">0</span></div>
+        <div class="stat-row"><span>Chat</span><span id="s-chat">0</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-lbl" style="color:var(--far);">Hvad er AI — kort fortalt</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:.8rem;">AI er programmer der <strong style="color:var(--text)">lærer fra data</strong> i stedet for faste regler. Tænk på det som en assistent der har læst hele internettet.</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;">I bruger allerede AI: Spotify, TikTok, Google Maps, FaceID — det er alle AI-systemer.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;" class="info-cards">
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-lbl" style="color:var(--lucca);">Til Lucca</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">Forestil dig at du træner en hund med godbidder. AI lærer på samme måde — bare med millioner af eksempler.</p>
+      </div>
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-lbl" style="color:var(--teal);">Til Far</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">Din RTX 5070 Ti med 16 GB VRAM er kraftig nok til at køre store AI-modeller lokalt — gratis.</p>
+      </div>
+      <div class="card" style="margin-bottom:0;">
+        <div class="card-lbl" style="color:var(--soren);">Til Søren</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">AI er overalt — fra ChatGPT til selvkørende biler. Her lærer du grundlaget på 4 uger.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="sec-plan" class="section">
+    <h2 class="section-title">Læringsplanen</h2>
+    <p class="section-sub">4 uger · 20 dage · 30 min om dagen. Alle sætter kryds på deres egne opgaver.</p>
+    <div class="wtabs" id="plan-tabs">
+      <button class="wtab a" onclick="showWeek(0)">Uge 1</button>
+      <button class="wtab" onclick="showWeek(1)">Uge 2</button>
+      <button class="wtab" onclick="showWeek(2)">Uge 3</button>
+      <button class="wtab" onclick="showWeek(3)">Uge 4</button>
+    </div>
+    <div id="week-display"></div>
+  </div>
+
+  <div id="sec-chat" class="section">
+    <h2 class="section-title">AI Læringsassistent</h2>
+    <p class="section-sub">Stil spørgsmål om AI og teknologi. Alle har sin egen chat.</p>
+    <div id="no-key" style="display:none;background:var(--card);border:0.5px solid rgba(232,125,90,0.4);border-radius:var(--radius);padding:1.1rem;margin-bottom:.9rem;">
+      <div style="color:var(--coral);font-weight:500;margin-bottom:5px;">Ingen API-nøgle</div>
+      <button class="api-btn" onclick="showSection('inst')">Gå til indstillinger →</button>
+    </div>
+    <div class="chat-box">
+      <div class="chat-hdr">
+        <div class="chat-av" id="chat-av" style="background:var(--far);">✦</div>
+        <div><div class="chat-title" id="chat-ttl">AI Assistent — Far</div><div class="chat-status" id="chat-st">Klar</div></div>
+      </div>
+      <div class="chat-msgs" id="chat-msgs">
+        <div class="msg ai"><div class="msg-bubble">Hej! Hvad vil du lære om i dag? 🤖</div></div>
+      </div>
+      <div class="chat-sugg">
+        <button class="sugg" onclick="useS(this)">Hvad er en AI-model?</button>
+        <button class="sugg" onclick="useS(this)">Forklar machine learning</button>
+        <button class="sugg" onclick="useS(this)">Hvad er Ollama?</button>
+        <button class="sugg" onclick="useS(this)">Hvad er VRAM?</button>
+      </div>
+      <div class="chat-ia">
+        <textarea class="chat-input" id="chat-in" placeholder="Skriv et spørgsmål..." rows="1" onkeydown="hKey(event)" oninput="aResize(this)"></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMsg()" style="background:var(--far);color:var(--bg);">→</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sec-quiz" class="section">
+    <h2 class="section-title">Quiz</h2>
+    <p class="section-sub">Test hvad du har lært. Point gemmes separat for alle.</p>
+    <div style="display:flex;gap:7px;margin-bottom:1.3rem;flex-wrap:wrap;" id="quiz-tabs">
+      <button class="wtab a" onclick="loadQ(0,this)">Uge 1</button>
+      <button class="wtab" onclick="loadQ(1,this)">Uge 2</button>
+      <button class="wtab" onclick="loadQ(2,this)">Uge 3</button>
+      <button class="wtab" onclick="loadQ(3,this)">Uge 4</button>
+    </div>
+    <div id="quiz-area"></div>
+  </div>
+
+  <div id="sec-inst" class="section">
+    <h2 class="section-title">Indstillinger</h2>
+    <p class="section-sub">API-nøgle til chatfunktionen.</p>
+    <div class="card">
+      <div class="card-lbl" style="color:var(--far);">API-nøgle</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:.9rem;">Hent fra <strong style="color:var(--text)">console.anthropic.com</strong> → API Keys → Create Key.</p>
+      <div class="api-row">
+        <input type="password" class="api-inp" id="api-inp" placeholder="sk-ant-...">
+        <button class="api-btn" onclick="saveKey()">Gem</button>
+      </div>
+      <div class="api-st" id="api-st"></div>
+      <div id="key-status" style="margin-top:9px;font-size:13px;"></div>
+      <button onclick="delKey()" style="margin-top:10px;padding:6px 13px;background:transparent;border:0.5px solid rgba(232,125,90,0.4);border-radius:var(--radius-sm);color:var(--coral);font-size:12px;cursor:pointer;">Slet nøgle</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const PROFILES = {
+  far:   { name:'Far',   emoji:'👨', color:'var(--far)',   btnClass:'af', chkClass:'cf', tabClass:'a' },
+  lucca: { name:'Lucca', emoji:'👧', color:'var(--lucca)', btnClass:'al', chkClass:'cl', tabClass:'al' },
+  soren: { name:'Søren', emoji:'🧑', color:'var(--soren)', btnClass:'as', chkClass:'cs', tabClass:'as' }
+};
+
+const W=[
+  {title:"Uge 1 — Hvad er AI?",desc:"Grundforståelse: hvad er AI, hvordan virker det?",days:[
+    {day:"Mandag",title:"AI i hverdagen",body:"Se videoen 'How AI Works' på YouTube og find 5 eksempler på AI I allerede bruger — Spotify, TikTok, Google Maps, FaceID, Netflix.",tags:["alle"],links:[{label:"🎬 Se video på YouTube",url:"https://www.youtube.com/results?search_query=how+ai+works+simple+explanation"}]},
+    {day:"Tirsdag",title:"Tal med Claude",body:"Stil Claude 10 spørgsmål om noget I finder spændende. Prøv at 'snyde' den — stil svære spørgsmål eller spørg om meget nylige ting.",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Onsdag",title:"Hvad er en AI-model?",body:"Læs forklaringen på forsiden her. Forklar det for hinanden med egne ord. God analogi: AI er som en der har læst 10 millioner bøger.",tags:["alle"],links:[]},
+    {day:"Torsdag",title:"AI tegner!",body:"Beskriv et billede med ord — fx 'en astronaut der spiser pizza på månen, tegneseriestil'. Prøv 5 forskellige beskrivelser.",tags:["alle","praksis"],links:[{label:"🎨 Åbn Ideogram.ai",url:"https://ideogram.ai"},{label:"🖼 Prøv Adobe Firefly",url:"https://firefly.adobe.com"}]},
+    {day:"Fredag",title:"Ugens refleksion",body:"Hvad overraskede jer mest denne uge? Hvad var sjovest? Skriv 3 spørgsmål I stadig har om AI.",tags:["alle"],links:[]}
+  ]},
+  {title:"Uge 2 — Kreativt med AI",desc:"Brug AI som kreativt værktøj til historier, musik og billeder.",days:[
+    {day:"Mandag",title:"Skriv en historie med AI",body:"Start med 'Der var engang...' og skift mellem at I og Claude skriver videre. Prøv at flytte historien til Mars!",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Tirsdag",title:"Prompt-engineering 101",body:"Stil samme spørgsmål 3 gange med forskellig formulering: 'forklar AI' vs 'forklar AI til en 12-årig' vs 'forklar AI med en sjov analogi'.",tags:["alle"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Onsdag",title:"AI-musik",body:"Beskriv den musik du vil have: genre, stemning og emne. Fx 'en glad pop-sang på dansk om at lære programmering'. Lav mindst 3 sange!",tags:["alle","praksis"],links:[{label:"🎵 Åbn Suno.ai",url:"https://suno.ai"},{label:"🎼 Prøv Udio.com",url:"https://udio.com"}]},
+    {day:"Torsdag",title:"Forklar AI til andre",body:"Forklar hvad AI er til et familiemedlem eller ven — uden at læse op. Brug egne ord og eksempler fra de seneste uger.",tags:["alle"],links:[]},
+    {day:"Fredag",title:"Kreativt miniprojekt",body:"Vælg selv: AI-tegneserie, en sang om familien, eller et digt. Del det med nogen!",tags:["alle","praksis"],links:[{label:"🎨 Ideogram.ai",url:"https://ideogram.ai"},{label:"🎵 Suno.ai",url:"https://suno.ai"},{label:"💬 Claude.ai",url:"https://claude.ai"}]}
+  ]},
+  {title:"Uge 3 — AI på din PC",desc:"Installer lokale AI-værktøjer og forstå hvad det vil sige at have AI hjemme.",days:[
+    {day:"Mandag",title:"Installer Ollama",body:"Download og installer Ollama. Åbn Terminal og skriv: ollama --version — ser du et versionsnummer virker det!",tags:["alle","praksis"],links:[{label:"⬇ Download Ollama",url:"https://ollama.com/download"}]},
+    {day:"Tirsdag",title:"Din første lokale AI",body:"I Terminal: skriv ollama run llama3.2 og tryk Enter. Chat med den og sammenlign med Claude — hvad er forskellen?",tags:["alle","praksis"],links:[{label:"📖 Ollama modeller",url:"https://ollama.com/library"}]},
+    {day:"Onsdag",title:"Bag kulisserne",body:"Denne hjemmeside kører på en server og sendes til jer over internettet. Præcis sådan virker hele internettet — bare i stor skala!",tags:["alle"],links:[]},
+    {day:"Torsdag",title:"Installer Claude Desktop",body:"Download Claude Desktop og log ind. Prøv at trække en fil ind i chat-vinduet — hvad sker der?",tags:["alle","praksis"],links:[{label:"⬇ Download Claude Desktop",url:"https://claude.ai/download"}]},
+    {day:"Fredag",title:"Hardware og AI",body:"Slå op og forklar for hinanden: GPU, VRAM, parametre. Hvad betyder det for hvilke AI-modeller man kan køre lokalt?",tags:["alle"],links:[{label:"🔍 Hvad er VRAM?",url:"https://www.youtube.com/results?search_query=what+is+vram+explained+simple"}]}
+  ]},
+  {title:"Uge 4 — Kode og fremtid",desc:"En første smagsprøve på kode med AI, og hvad fremtiden kan bringe.",days:[
+    {day:"Mandag",title:"AI skriver kode",body:"Bed Claude om: 'Skriv et Python-program der fortæller en tilfældig joke på dansk'. Gå på Replit, indsæt koden og tryk Run!",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Åbn Replit.com",url:"https://replit.com"}]},
+    {day:"Tirsdag",title:"Ret en fejl med AI",body:"Ændr én ting i koden så den fejler. Kopier fejlbeskeden til Claude og lær hvad debugging er.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Onsdag",title:"Dit eget miniprojekt",body:"Vælg dit eget miniprojekt: En quiz, et tilfældighedsprogram, eller noget helt andet! Claude hjælper dig.",tags:["alle","praksis"],links:[{label:"💻 Åbn Replit.com",url:"https://replit.com"},{label:"💬 Claude hjælper",url:"https://claude.ai"}]},
+    {day:"Torsdag",title:"AI og fremtiden",body:"Se en video om hvad AI måske kan om 10 år. Snak om: Hvad er I spændte på? Hvad bekymrer jer?",tags:["alle"],links:[{label:"🎬 Future of AI 2035",url:"https://www.youtube.com/results?search_query=future+of+ai+2035+explained"}]},
+    {day:"Fredag",title:"Fejr det! 🏆",body:"I har gennemført hele forløbet! Spørg AI-chatbotten: 'Vi har netop gennemført 4 ugers AI-læring. Hvad anbefaler du som næste skridt?'",tags:["alle"],links:[]}
+  ]}
+];
+
+const QZ=[
+  [{q:"Hvad er AI?",o:["Regneprogram med faste regler","Software der lærer fra data","En robot der kan gå","Et søgemaskineprogram"],a:1,e:"AI lærer fra eksempler — ikke forudbestemte regler."},
+   {q:"Hvad er en 'prompt'?",o:["At genstarte computeren","Det man skriver til AI","Et grafikkort","En WiFi-type"],a:1,e:"En prompt er din besked til AI. Jo mere præcis, jo bedre svar."},
+   {q:"Hvad er IKKE AI?",o:["Spotify-anbefalinger","Google Maps ruter","En lommeregner","TikTok videoer"],a:2,e:"En lommeregner følger faste regler — den lærer ikke."},
+   {q:"Hvad gav AI meget at lære fra?",o:["Radio","Internettet","Biblioteksbøger","Aviser"],a:1,e:"Internettet gav enorme mængder tekst til AI-træning."},
+   {q:"Hvad betyder 'trænet' model?",o:["Opdateret software","Gennemgået millioner eksempler","Forbundet til internet","Følger regler"],a:1,e:"Træning er processen hvor modellen gradvis bliver bedre."}],
+  [{q:"Hvad er prompt-engineering?",o:["Bygge hardware","Skrive gode AI-instruktioner","Programmere AI","Teste AI"],a:1,e:"Kunsten at formulere spørgsmål så AI svarer bedst muligt."},
+   {q:"Hvad kan suno.ai?",o:["Generere billeder","Skrive kode","Generere musik fra tekst","Oversætte"],a:2,e:"Suno.ai laver sange med vokal fra en tekstbeskrivelse."},
+   {q:"Du skriver 'til en 8-årig' — hvad sker der?",o:["Intet","Samme tekst","Simplere sprog","Mere teknisk"],a:2,e:"Kontekst i prompten påvirker stærkt AI's formulering."},
+   {q:"Hvad er AI-billeder?",o:["Ingen forskel fra fotos","Altid dårligere","Genereret fra mønstre — ikke kamera","Taget hurtigere"],a:2,e:"AI genererer billeder pixel for pixel fra trænede mønstre."},
+   {q:"Dårligt AI-svar — hvad gør du?",o:["Mere specifik prompt","Sluk computeren","AI kan ikke forbedres","Send klage"],a:0,e:"Specifik formulering er det vigtigste redskab."}],
+  [{q:"Hvad er Ollama?",o:["Google cloud-produkt","Kører AI lokalt på din PC","Programmeringssprog","Socialt medie"],a:1,e:"Ollama kører AI-modeller direkte på din hardware."},
+   {q:"Fordel ved lokal AI?",o:["Altid hurtigere","Data forlader aldrig computeren","Kræver ingen hardware","Kun gaming"],a:1,e:"Lokal AI: komplet privatliv — ingen data til ekstern server."},
+   {q:"Hvad er VRAM?",o:["Internethastighed","CPU-hukommelse","Grafikkortets hukommelse","Et filformat"],a:2,e:"VRAM er grafikkortets hukommelse — vigtigt for AI-modellers størrelse."},
+   {q:"16 GB VRAM — hvad betyder det?",o:["Kun små modeller","Store modeller — rigtig godt!","VRAM er ligegyldigt","Kun billeder"],a:1,e:"16 GB VRAM er fremragende til de fleste open source-modeller."},
+   {q:"Hvad er en 'server'?",o:["En type browser","En computer der sender data til andre","Kun en sky-tjeneste","Et programmeringssprog"],a:1,e:"En server er en computer der leverer indhold til andre computere."}],
+  [{q:"Hvad er Python?",o:["Programmeringssprog til AI","En type server","Et AI-firma","Et grafikkort"],a:0,e:"Python er særligt populært til AI og dataanalyse."},
+   {q:"Hvad er debugging?",o:["Slette programmer","Finde og rette fejl i kode","Installere programmer","Opdatere"],a:1,e:"Debugging er processen med at finde og rette kodefejl."},
+   {q:"Hvad er replit.com?",o:["En AI-model","Kodeeditor i browseren","Socialt medie","Database"],a:1,e:"Replit lader dig kode direkte i browseren — ingen installation."},
+   {q:"Hvad er en 'parameter'?",o:["En kodefejl","Tal justeret under træning","Et batteri","Et sprog"],a:1,e:"Milliardvis af parametre 'husker' hvad modellen har lært."},
+   {q:"Vigtigste færdighed i AI-fremtid?",o:["Perfekt programmering","Kommunikere effektivt med AI","Undgå AI","Huske modeller"],a:1,e:"At kommunikere klart med AI er den mest værdifulde færdighed."}]
+];
+
+const HTXT=["30 minutter om dagen. 4 uger. Far, Lucca og Søren — sammen.","I er i gang! Husk: 30 min hver dag.","Halvvejs! Uge 3 handler om AI direkte på jeres PC.","Kun én uge tilbage — kode og fremtiden venter!","🏆 I har gennemført hele forløbet!"];
+
+let cp='far', cw=0, aKey=localStorage.getItem('apiKey')||'', cQuiz={set:0,idx:0,ans:false,score:0};
+let cHist={far:[],lucca:[],soren:[]};
+let prog={far:{done:[],quizDone:0,chatCount:0},lucca:{done:[],quizDone:0,chatCount:0},soren:{done:[],quizDone:0,chatCount:0}};
+
+async function loadProg(){
+  try{const r=await fetch('/api/progress');if(r.ok){const d=await r.json();if(!d.soren)d.soren={done:[],quizDone:0,chatCount:0};prog=d;updStats();}}
+  catch(e){}
+}
+async function saveProg(){try{await fetch('/api/progress',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(prog)});}catch(e){}}
+
+function updStats(){
+  Object.keys(PROFILES).forEach(p=>{
+    const d=prog[p].done.length,q=prog[p].quizDone,c=prog[p].chatCount;
+    const s=p[0];
+    document.getElementById(s+'-days').textContent=d;
+    document.getElementById(s+'-quiz').textContent=q;
+    document.getElementById(s+'-chat').textContent=c;
+    document.getElementById('r'+s).style.width=(d/20*100)+'%';
+    document.getElementById('rn-'+p).textContent=d+'/20';
+  });
+  const counts=Object.keys(PROFILES).map(p=>({p,d:prog[p].done.length}));
+  const max=Math.max(...counts.map(c=>c.d));
+  const wk=Math.floor(max/5);
+  document.getElementById('hero-txt').textContent=HTXT[Math.min(wk,4)];
+  const leaders=counts.filter(c=>c.d===max&&c.d>0);
+  let rt='Ingen har startet — hvem tager første skridt?';
+  if(max>0){
+    if(leaders.length===counts.length)rt=`Uafgjort — ${max} dage hver! 🤝`;
+    else if(leaders.length===1){
+      const l=PROFILES[leaders[0].p];
+      rt=`${l.emoji} ${l.name} leder med ${max} dage! De andre må tage sig sammen! 😄`;
+    } else {
+      rt=`${leaders.map(l=>PROFILES[l.p].name).join(' og ')} deler føringen med ${max} dage! 🤝`;
+    }
+  }
+  document.getElementById('race-txt').textContent=rt;
+}
+
+function switchProfile(p){
+  cp=p;const pr=PROFILES[p];
+  Object.keys(PROFILES).forEach(k=>{
+    document.getElementById('btn-'+k).className='profile-btn'+(k===p?' '+PROFILES[k].btnClass:'');
+  });
+  document.getElementById('chat-av').style.background=pr.color;
+  document.getElementById('chat-ttl').textContent='AI Assistent — '+pr.name;
+  document.getElementById('send-btn').style.background=pr.color;
+  document.getElementById('send-btn').style.color=p==='far'?'var(--bg)':'#fff';
+  document.getElementById('chat-msgs').innerHTML=`<div class="msg ai"><div class="msg-bubble">Hej ${pr.name}! Hvad vil du lære om i dag? 🤖</div></div>`;
+  const cur=document.querySelector('.section.active');
+  if(cur&&cur.id==='sec-plan')renderWeek();
+  updStats();
+}
+
+function showSection(n){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  document.getElementById('sec-'+n).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>{if(l.textContent.toLowerCase().includes(n.slice(0,3)))l.classList.add('active');});
+  if(n==='plan')renderWeek();
+  if(n==='quiz')loadQ(0,document.querySelector('#quiz-tabs .wtab'));
+  if(n==='hjem'){loadProg();updStats();}
+  if(n==='inst')updKeyStatus();
+  if(n==='chat')document.getElementById('no-key').style.display=aKey?'none':'block';
+}
+
+const TM={alle:['tag-alle','Alle'],far:['tag-far','Far'],lucca:['tag-lucca','Lucca'],soren:['tag-soren','Søren'],praksis:['tag-praksis','Praksis']};
+
+function renderWeek(){
+  const w=W[cw],pr=PROFILES[cp];
+  document.querySelectorAll('#plan-tabs .wtab').forEach((t,i)=>{t.className='wtab'+(i===cw?' '+pr.tabClass:'');});
+  const html=`<div class="week-info"><div class="week-info-title">${w.title}</div><div class="week-info-desc">${w.desc}</div></div>
+  <div class="days-grid">${w.days.map((d,di)=>{
+    const k=`${cw}-${di}`;
+    const allDone=Object.keys(PROFILES).every(p=>prog[p].done.includes(k));
+    const dc=allDone?'done-all':'';
+    return `<div class="day-card ${dc}">
+      <div class="day-header"><span class="day-name">${d.day}</span>
+      <div class="check-row">
+        ${Object.keys(PROFILES).map(p=>{
+          const done=prog[p].done.includes(k);
+          const pf=PROFILES[p];
+          const canClick=p===cp;
+          return `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <button class="chk ${done?pf.chkClass:''} ${!canClick?'disabled':''}" onclick="${canClick?`toggleDay('${k}','${p}')`:'null'}" title="${pf.name}">${done?'✓':''}<span class="lbl">${pf.name}</span></button>
+          </div>`;
+        }).join('')}
+      </div></div>
+      <div class="day-title">${d.title}</div>
+      <div class="day-body">${d.body}</div>
+      ${d.links&&d.links.length?`<div class="day-links">${d.links.map(l=>`<a href="${l.url}" target="_blank" class="day-link">${l.label}</a>`).join('')}</div>`:''}
+      <div class="tags">${d.tags.map(t=>TM[t]?`<span class="tag ${TM[t][0]}">${TM[t][1]}</span>`:'').join('')}</div>
+    </div>`;
+  }).join('')}</div>`;
+  document.getElementById('week-display').innerHTML=html;
+}
+
+function showWeek(n){
+  cw=n;renderWeek();
+}
+
+function toggleDay(k,who){
+  if(who!==cp)return;
+  const arr=prog[cp].done,idx=arr.indexOf(k);
+  if(idx>-1)arr.splice(idx,1);else arr.push(k);
+  saveProg();renderWeek();updStats();
+}
+
+function saveKey(){
+  const k=document.getElementById('api-inp').value.trim();
+  if(!k.startsWith('sk-ant-')){document.getElementById('api-st').textContent='Ugyldig (skal starte med sk-ant-)';document.getElementById('api-st').className='api-st err';return;}
+  aKey=k;localStorage.setItem('apiKey',k);
+  document.getElementById('api-inp').value='';
+  document.getElementById('api-st').textContent='✓ Gemt!';document.getElementById('api-st').className='api-st ok';
+  updKeyStatus();
+}
+function delKey(){aKey='';localStorage.removeItem('apiKey');document.getElementById('api-st').textContent='Slettet.';document.getElementById('api-st').className='api-st err';updKeyStatus();}
+function updKeyStatus(){const el=document.getElementById('key-status');el.innerHTML=aKey?`<span style="color:var(--teal)">✓ ${aKey.slice(0,10)}...${aKey.slice(-4)}</span>`:`<span style="color:var(--muted)">Ingen nøgle.</span>`;}
+
+function hKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+function aResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+function useS(btn){document.getElementById('chat-in').value=btn.textContent;sendMsg();}
+
+function addMsg(role,text){
+  const msgs=document.getElementById('chat-msgs');
+  const now=new Date().toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'});
+  const div=document.createElement('div');div.className='msg '+role;
+  const pr=PROFILES[cp];
+  const uc=`background:${pr.color};color:${cp==='far'?'var(--bg)':'#fff'};`;
+  div.innerHTML=`<div class="msg-bubble" style="${role==='user'?uc:''}">${text.replace(/\n/g,'<br>')}</div><div class="msg-time">${now}</div>`;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+
+async function sendMsg(){
+  const inp=document.getElementById('chat-in'),text=inp.value.trim();
+  if(!text)return;if(!aKey){alert('Tilføj API-nøgle under ⚙');return;}
+  inp.value='';inp.style.height='auto';
+  document.getElementById('send-btn').disabled=true;
+  document.getElementById('chat-st').textContent='Skriver...';
+  addMsg('user',text);
+  if(!cHist[cp])cHist[cp]=[];
+  cHist[cp].push({role:'user',content:text});
+  const t=document.createElement('div');t.className='msg ai';
+  t.innerHTML='<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
+  document.getElementById('chat-msgs').appendChild(t);document.getElementById('chat-msgs').scrollTop=99999;
+  const sysPrompts={
+    far:'Du er AI-læringsassistent for en far i Danmark der lærer om AI sammen med sin datter og en ven. Svar på dansk, vær klar og engagerende.',
+    lucca:'Du taler med Lucca, en 12-årig pige i Danmark der lærer om AI. Brug simple ord og sjove eksempler. Svar på dansk. Vær opmuntrende!',
+    soren:'Du taler med Søren, som lærer om AI sammen med venner. Svar på dansk, vær klar og engagerende. Gør det praktisk og interessant.'
+  };
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':aKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1000,
+        system:sysPrompts[cp],
+        messages:cHist[cp]})});
+    const data=await r.json();t.remove();
+    const rep=data.content?.[0]?.text||'Beklager, ingen svar. Tjek din API-nøgle.';
+    addMsg('ai',rep);cHist[cp].push({role:'assistant',content:rep});
+    prog[cp].chatCount++;saveProg();updStats();
+  }catch(e){t.remove();addMsg('ai','Fejl. Tjek din API-nøgle.');}
+  document.getElementById('send-btn').disabled=false;
+  document.getElementById('chat-st').textContent='Klar';
+}
+
+function loadQ(n,btn){
+  document.querySelectorAll('#quiz-tabs .wtab').forEach(t=>t.className='wtab');
+  if(btn)btn.className='wtab '+PROFILES[cp].tabClass;
+  cQuiz={set:n,idx:0,ans:false,score:0};renderQ();
+}
+
+function renderQ(){
+  const q=QZ[cQuiz.set][cQuiz.idx],tot=QZ[cQuiz.set].length;
+  const pr=PROFILES[cp];
+  document.getElementById('quiz-area').innerHTML=`
+    <div class="quiz-card">
+      <div style="font-size:11px;color:${pr.color};margin-bottom:.9rem;">${pr.emoji} ${pr.name} — Uge ${cQuiz.set+1}</div>
+      <div class="quiz-q">${cQuiz.idx+1}. ${q.q}</div>
+      <div class="quiz-opts">${q.o.map((o,i)=>`<button class="qopt" onclick="ansQ(${i})">${o}</button>`).join('')}</div>
+      <div class="qfb" id="qfb"></div>
+      <div class="quiz-nav">
+        <div class="quiz-counter">${cQuiz.idx+1} / ${tot}</div>
+        <button class="btn-p" id="qnxt" style="display:none;background:${pr.color};color:${cp==='far'?'var(--bg)':'#fff'};" onclick="nxtQ()">Næste →</button>
+      </div>
+    </div>`;
+}
+
+function ansQ(i){
+  if(cQuiz.ans)return;cQuiz.ans=true;
+  const q=QZ[cQuiz.set][cQuiz.idx];
+  const opts=document.querySelectorAll('.qopt');opts.forEach(o=>o.disabled=true);
+  const fb=document.getElementById('qfb');
+  if(i===q.a){opts[i].classList.add('correct');fb.textContent='✓ Rigtigt! '+q.e;fb.className='qfb show ok';cQuiz.score++;}
+  else{opts[i].classList.add('wrong');opts[q.a].classList.add('correct');fb.textContent='✗ Rigtigt: '+q.o[q.a]+'. '+q.e;fb.className='qfb show fail';}
+  const btn=document.getElementById('qnxt');btn.style.display='block';
+  if(cQuiz.idx>=QZ[cQuiz.set].length-1)btn.textContent='Se resultat ✓';
+}
+
+function nxtQ(){
+  const tot=QZ[cQuiz.set].length,pr=PROFILES[cp];
+  if(cQuiz.idx>=tot-1){
+    prog[cp].quizDone+=cQuiz.score;saveProg();updStats();
+    const pct=Math.round(cQuiz.score/tot*100),em=pct===100?'🏆':pct>=80?'⭐':pct>=60?'👍':'💪';
+    document.getElementById('quiz-area').innerHTML=`<div class="score-card">
+      <div style="font-size:34px;margin-bottom:.7rem">${em}</div>
+      <div class="score-big" style="color:${pr.color}">${cQuiz.score}/${tot}</div>
+      <div style="font-size:14px;color:var(--muted);margin:.5rem 0">${pct}% — ${pr.name}</div>
+      <p style="font-size:13px;color:var(--muted);margin:1rem auto;max-width:300px;line-height:1.7">${pct===100?'Perfekt!':pct>=80?'Rigtig flot!':pct>=60?'Godt arbejde!':'Bliv ved!'}</p>
+      <button class="btn-p" onclick="loadQ(${cQuiz.set},null)" style="margin-right:7px;background:${pr.color};color:${cp==='far'?'var(--bg)':'#fff'}">Prøv igen</button>
+      <button class="btn-g" onclick="showSection('hjem')">Tilbage</button>
+    </div>`;
+  }else{cQuiz.idx++;cQuiz.ans=false;renderQ();}
+}
+
+loadProg();updKeyStatus();
+</script>
+</body>
+</html>
