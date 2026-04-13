@@ -189,7 +189,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.9
     <div class="hero">
       <div class="hero-eyebrow">Koehte familien · 2026</div>
       <h1 class="hero-title">Jeres rejse ind i <em>kunstig intelligens</em></h1>
-      <p class="hero-sub" id="hero-txt">30 minutter om dagen. 4 uger. Far, Lucca og Søren — sammen.</p>
+      <p class="hero-sub" id="hero-txt">30 minutter om dagen. 8 uger. Far, Lucca og Søren — sammen.</p>
     </div>
     <div class="race-box">
       <div class="race-title">🏁 Hvem er foran?</div>
@@ -253,12 +253,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.9
 
   <div id="sec-plan" class="section">
     <h2 class="section-title">Læringsplanen</h2>
-    <p class="section-sub">4 uger · 20 dage · 30 min om dagen. Alle sætter kryds på deres egne opgaver.</p>
+    <p class="section-sub">8 uger · 40 dage · 30 min om dagen. Alle sætter kryds på deres egne opgaver.</p>
     <div class="wtabs" id="plan-tabs">
       <button class="wtab a" onclick="showWeek(0)">Uge 1</button>
       <button class="wtab" onclick="showWeek(1)">Uge 2</button>
       <button class="wtab" onclick="showWeek(2)">Uge 3</button>
       <button class="wtab" onclick="showWeek(3)">Uge 4</button>
+      <button class="wtab" onclick="showWeek(4)">Uge 5</button>
+      <button class="wtab" onclick="showWeek(5)">Uge 6</button>
+      <button class="wtab" onclick="showWeek(6)">Uge 7</button>
+      <button class="wtab" onclick="showWeek(7)">Uge 8</button>
     </div>
     <div id="week-display"></div>
   </div>
@@ -299,6 +303,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.9
       <button class="wtab" onclick="loadQ(1,this)">Uge 2</button>
       <button class="wtab" onclick="loadQ(2,this)">Uge 3</button>
       <button class="wtab" onclick="loadQ(3,this)">Uge 4</button>
+      <button class="wtab" onclick="loadQ(4,this)">Uge 5</button>
+      <button class="wtab" onclick="loadQ(5,this)">Uge 6</button>
+      <button class="wtab" onclick="loadQ(6,this)">Uge 7</button>
+      <button class="wtab" onclick="loadQ(7,this)">Uge 8</button>
     </div>
     <div id="quiz-area"></div>
   </div>
@@ -355,7 +363,35 @@ const W=[
     {day:"Tirsdag",title:"Ret en fejl med AI",body:"Ændr én ting i koden så den fejler. Kopier fejlbeskeden til Claude og lær hvad debugging er.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
     {day:"Onsdag",title:"Dit eget miniprojekt",body:"Vælg dit eget miniprojekt: En quiz, et tilfældighedsprogram, eller noget helt andet! Claude hjælper dig.",tags:["alle","praksis"],links:[{label:"💻 Åbn Replit.com",url:"https://replit.com"},{label:"💬 Claude hjælper",url:"https://claude.ai"}]},
     {day:"Torsdag",title:"AI og fremtiden",body:"Se en video om hvad AI måske kan om 10 år. Snak om: Hvad er I spændte på? Hvad bekymrer jer?",tags:["alle"],links:[{label:"🎬 Future of AI 2035",url:"https://www.youtube.com/results?search_query=future+of+ai+2035+explained"}]},
-    {day:"Fredag",title:"Fejr det! 🏆",body:"I har gennemført hele forløbet! Spørg AI-chatbotten: 'Vi har netop gennemført 4 ugers AI-læring. Hvad anbefaler du som næste skridt?'",tags:["alle"],links:[]}
+    {day:"Fredag",title:"Halvvejs-fejring! 🎉",body:"I har klaret de første 4 uger! Kig tilbage: Hvad var det bedste I lærte? Skriv jeres top-3 AI-opdagelser ned og del dem med hinanden.",tags:["alle"],links:[]}
+  ]},
+  {title:"Uge 5 — AI og etik",desc:"Forstå AI's påvirkning på samfundet — bias, privatliv og ansvar.",days:[
+    {day:"Mandag",title:"AI-bias",body:"AI lærer fra data — og data kan være skævt. Bed Claude om at beskrive en 'typisk ingeniør' og en 'typisk sygeplejerske'. Diskutér hvad I bemærker og hvorfor.",tags:["alle"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Tirsdag",title:"Deepfakes",body:"Se AI-genererede ansigter på ThisPersonDoesNotExist. Kan I se forskel på ægte og falske billeder? Diskutér: Hvornår er falsk AI-indhold farligt?",tags:["alle"],links:[{label:"🔍 ThisPersonDoesNotExist",url:"https://thispersondoesnotexist.com"}]},
+    {day:"Onsdag",title:"AI og privatliv",body:"Når I skriver til Claude eller ChatGPT — hvad sker der med jeres data? Diskutér: Hvad ville I aldrig skrive til en AI? Læs en AI-tjenestes privatlivspolitik.",tags:["alle"],links:[{label:"🔒 Anthropic Privacy",url:"https://www.anthropic.com/privacy"}]},
+    {day:"Torsdag",title:"AI i skolen",body:"Diskutér: Hvornår er det OK at bruge AI til lektier? Hvornår er det snyd? Prøv at lade Claude løse en opgave — forklar derefter svaret med egne ord.",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Fredag",title:"AI-debat",body:"Hold en familiedebat: 'Skal der være love for AI?' Én argumenterer for, én imod, én er dommer. Brug Claude til at finde argumenter for begge sider.",tags:["alle"],links:[]}
+  ]},
+  {title:"Uge 6 — Avanceret prompting",desc:"Bliv bedre til at kommunikere med AI — teknikker, personas og workflows.",days:[
+    {day:"Mandag",title:"System prompts",body:"En system prompt fortæller AI'en hvem den er. Prøv i chatten: 'Du er en pirat der kun svarer på vers' — og stil spørgsmål om matematik. Eksperimentér med vilde personligheder!",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Tirsdag",title:"Trin-for-trin tænkning",body:"Tilføj 'Tænk trin for trin' til jeres prompts. Sammenlign svarene med og uden. Prøv med: 'Hvad er 17 × 23?' og logiske gåder.",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Onsdag",title:"Few-shot prompting",body:"Giv AI'en eksempler: 'Her er 3 gode jokes: [jokes]. Skriv 5 mere i samme stil.' Prøv med opskrifter, boganbefalinger eller historier.",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Torsdag",title:"AI som livs-assistent",body:"Brug Claude til noget virkeligt: Planlæg en fødselsdagsfest, skriv en uges madplan med indkøbsliste, eller organiser en ferie.",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Fredag",title:"Byg en AI-persona",body:"Design jeres egen AI-karakter med personlighed, ekspertise og stil. Skriv system prompten ned, test den — reagerer AI'en som forventet? Del jeres bedste persona.",tags:["alle","praksis"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]}
+  ]},
+  {title:"Uge 7 — Byg med AI",desc:"Brug AI som værktøj til at bygge rigtige ting — hjemmesider, scripts og analyser.",days:[
+    {day:"Mandag",title:"HTML med AI",body:"Bed Claude om at lave en hjemmeside om noget I elsker — fx et spil, en hobby eller jeres familie. Kopiér koden til Replit og se resultatet live!",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Åbn Replit.com",url:"https://replit.com"}]},
+    {day:"Tirsdag",title:"Automatisér det kedelige",body:"Tænk på noget kedeligt I gør ofte. Bed Claude om at skrive et program: tilfældige holdopdelinger, en madplan-generator, eller en quiz om jer selv!",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Onsdag",title:"Data og AI",body:"Find interessant data (vejr, sport, befolkning) og bed Claude om at analysere det. Hvad kan AI finde som I ikke selv ville opdage?",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]},
+    {day:"Torsdag",title:"Hvordan apps bruger AI",body:"Denne hjemmeside bruger en AI API! Jeres API-nøgle sender spørgsmål til Claude. Diskutér: Hvordan bruger Spotify, Google Maps og TikTok AI bag kulisserne?",tags:["alle"],links:[]},
+    {day:"Fredag",title:"Projekt-showcase",body:"Vælg jeres bedste AI-projekt fra ugen og præsentér det for hinanden. Forklar: Hvad gør det? Hvordan lavede I det? Hvad lærte I?",tags:["alle"],links:[]}
+  ]},
+  {title:"Uge 8 — AI-mester",desc:"Afslut forløbet med et brag — udforsk nye værktøjer og byg jeres eget AI-projekt.",days:[
+    {day:"Mandag",title:"Hugging Face",body:"Udforsk Hugging Face — et bibliotek med tusindvis af gratis AI-modeller. Prøv en demo: billedgenkendelse, tekstgenerering eller oversættelse. Hvad overrasker jer?",tags:["alle","praksis"],links:[{label:"🤗 Hugging Face",url:"https://huggingface.co/spaces"}]},
+    {day:"Tirsdag",title:"AI-trends 2026",body:"Søg efter de nyeste AI-nyheder. Hvad er det seneste gennembrud? Diskutér: Hvilken AI-teknologi tror I vil ændre mest i de næste 5 år?",tags:["alle"],links:[{label:"🔍 Søg AI nyheder",url:"https://www.youtube.com/results?search_query=ai+news+2026+dansk"}]},
+    {day:"Onsdag",title:"Jeres AI-projekt",body:"Start jeres eget AI-projekt! En chatbot til noget specifikt, en hjemmeside, et spil, eller noget helt fjerde. Claude hjælper jer hele vejen.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Torsdag",title:"Færdiggør projektet",body:"Gør jeres projekt helt færdigt. Test det, ret fejl med Claude, og forbered en kort præsentation: Hvad gør det? Hvorfor lavede I det?",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]},
+    {day:"Fredag",title:"Eksamen bestået! 🏆",body:"I er nu AI-kyndige! 8 uger, 40 dage — tillykke! Spørg Claude: 'Vi har gennemført 8 ugers AI-læring. Hvad anbefaler du som næste skridt?'",tags:["alle"],links:[{label:"💬 Spørg Claude",url:"https://claude.ai"}]}
   ]}
 ];
 
@@ -379,10 +415,30 @@ const QZ=[
    {q:"Hvad er debugging?",o:["Slette programmer","Finde og rette fejl i kode","Installere programmer","Opdatere"],a:1,e:"Debugging er processen med at finde og rette kodefejl."},
    {q:"Hvad er replit.com?",o:["En AI-model","Kodeeditor i browseren","Socialt medie","Database"],a:1,e:"Replit lader dig kode direkte i browseren — ingen installation."},
    {q:"Hvad er en 'parameter'?",o:["En kodefejl","Tal justeret under træning","Et batteri","Et sprog"],a:1,e:"Milliardvis af parametre 'husker' hvad modellen har lært."},
-   {q:"Vigtigste færdighed i AI-fremtid?",o:["Perfekt programmering","Kommunikere effektivt med AI","Undgå AI","Huske modeller"],a:1,e:"At kommunikere klart med AI er den mest værdifulde færdighed."}]
+   {q:"Vigtigste færdighed i AI-fremtid?",o:["Perfekt programmering","Kommunikere effektivt med AI","Undgå AI","Huske modeller"],a:1,e:"At kommunikere klart med AI er den mest værdifulde færdighed."}],
+  [{q:"Hvad er AI-bias?",o:["En type computer","Skævheder i AI pga. træningsdata","En programmeringsfejl","En AI-model"],a:1,e:"Bias opstår når træningsdata ikke repræsenterer virkeligheden balanceret."},
+   {q:"Hvad er en deepfake?",o:["En virus","Et hackingværktøj","AI-genereret falsk billede eller video","En søgemaskine"],a:2,e:"Deepfakes bruger AI til at lave realistiske, men falske, billeder og videoer."},
+   {q:"Hvad bør du IKKE skrive til en AI?",o:["Sjove spørgsmål","Passwords og CPR-nummer","Spørgsmål om vejret","Lektiespørgsmål"],a:1,e:"Del aldrig følsomme persondata med AI-tjenester."},
+   {q:"Hvornår er AI til lektier OK?",o:["Altid","Aldrig","Når du forstår og kan forklare svaret","Kun til matematik"],a:2,e:"AI er et godt læringsværktøj — men du skal forstå svaret selv."},
+   {q:"Hvorfor har vi brug for AI-regler?",o:["For at gøre AI langsommere","For at beskytte mennesker mod misbrug","AI-regler er unødvendige","For at slette AI"],a:1,e:"Regler sikrer at AI bruges ansvarligt og ikke skader mennesker."}],
+  [{q:"Hvad er en system prompt?",o:["En fejlmeddelelse","Instruktion der styrer AI'ens opførsel","En type hardware","Et password"],a:1,e:"System prompts definerer AI'ens rolle, stil og begrænsninger."},
+   {q:"Hvad gør 'tænk trin for trin'?",o:["AI svarer hurtigere","AI viser sin ræsonnering","AI tegner et billede","Intet"],a:1,e:"Trin-for-trin giver mere gennemtænkte og præcise svar."},
+   {q:"Hvad er few-shot prompting?",o:["At bruge få ord","At give eksempler i prompten","At skyde med en kanon","At slukke AI"],a:1,e:"Few-shot: Du giver eksempler så AI forstår formatet du vil have."},
+   {q:"Hvad er en AI-persona?",o:["Et menneske der ligner AI","En defineret rolle og stil for AI","En type virus","Et socialt medie"],a:1,e:"En persona er en beskrivelse af hvem AI'en skal 'være' i samtalen."},
+   {q:"Hvad forbedrer AI-svar mest?",o:["Større skærm","Hurtigere internet","Specifik og klar formulering","At råbe i caps lock"],a:2,e:"Jo mere præcist du formulerer dig, jo bedre svar får du."}],
+  [{q:"Hvad er HTML?",o:["En AI-model","Sproget bag hjemmesider","Et socialt medie","En type hardware"],a:1,e:"HTML er det grundlæggende sprog der strukturerer alle hjemmesider."},
+   {q:"Hvad er en API?",o:["En type browser","En måde programmer taler sammen","Et password","En database"],a:1,e:"API'er lader programmer sende data til hinanden — fx din besked til Claude."},
+   {q:"Hvad kan AI IKKE hjælpe med i kodning?",o:["Skrive kode","Forklare fejl","Forstå koden for dig","Rette bugs"],a:2,e:"AI kan skrive og rette kode — men DU skal forstå hvad den gør."},
+   {q:"Hvad er et datasæt?",o:["En type computer","En samling struktureret information","Et program","En hjemmeside"],a:1,e:"Datasæt er struktureret data — fx tabeller med tal, tekst eller billeder."},
+   {q:"Hvorfor er kodning + AI en god kombination?",o:["AI erstatter al kodning","Man behøver ikke tænke","AI skriver kode, du styrer retningen","Kodning er ligegyldigt"],a:2,e:"AI er et kraftfuldt værktøj — men du er piloten der bestemmer kursen."}],
+  [{q:"Hvad er Hugging Face?",o:["Et socialt medie","Platform med åbne AI-modeller","En søgemaskine","Et spil"],a:1,e:"Hugging Face er det største bibliotek af gratis, åbne AI-modeller."},
+   {q:"Hvad er open source AI?",o:["AI der koster penge","AI-modeller alle kan bruge og ændre","Lukket AI","AI kun for firmaer"],a:1,e:"Open source betyder koden er fri — alle kan bruge, studere og forbedre den."},
+   {q:"Hvad er fine-tuning?",o:["At gøre AI hurtigere","At tilpasse en AI-model til en specifik opgave","At slette en model","At købe en ny computer"],a:1,e:"Fine-tuning træner en eksisterende model videre med specialiseret data."},
+   {q:"Hvad er den vigtigste AI-færdighed?",o:["Programmering i C++","At kommunikere klart med AI","At huske alle modeller","At undgå AI helt"],a:1,e:"Evnen til at formulere gode prompts er den mest værdifulde AI-færdighed."},
+   {q:"Hvad bør I gøre efter dette forløb?",o:["Glemme alt om AI","Blive ved med at eksperimentere","Vente på nye regler","Kun bruge Google"],a:1,e:"AI udvikler sig hurtigt — det bedste I kan gøre er at blive ved med at lære og prøve nyt!"}]
 ];
 
-const HTXT=["30 minutter om dagen. 4 uger. Far, Lucca og Søren — sammen.","I er i gang! Husk: 30 min hver dag.","Halvvejs! Uge 3 handler om AI direkte på jeres PC.","Kun én uge tilbage — kode og fremtiden venter!","🏆 I har gennemført hele forløbet!"];
+const HTXT=["30 minutter om dagen. 8 uger. Far, Lucca og Søren — sammen.","I er i gang! Husk: 30 min hver dag.","Uge 2 klaret! Kreativiteten blomstrer.","Uge 3 done! Nu kører AI lokalt på jeres PC.","Halvvejs! 4 uger i hus — de næste 4 bliver endnu bedre!","Uge 5 klaret! I forstår nu AI og etik.","Uge 6 done! I er promptmestre nu.","Uge 7 i hus! I bygger allerede med AI.","🏆 I har gennemført hele forløbet — 8 uger, 40 dage!"];
 
 let cp='far', cw=0, aKey='', cQuiz={set:0,idx:0,ans:false,score:0};
 let cHist={far:[],lucca:[],soren:[]};
@@ -405,13 +461,13 @@ function updStats(){
     document.getElementById(s+'-days').textContent=d;
     document.getElementById(s+'-quiz').textContent=q;
     document.getElementById(s+'-chat').textContent=c;
-    document.getElementById('r'+s).style.width=(d/20*100)+'%';
-    document.getElementById('rn-'+p).textContent=d+'/20';
+    document.getElementById('r'+s).style.width=(d/40*100)+'%';
+    document.getElementById('rn-'+p).textContent=d+'/40';
   });
   const counts=Object.keys(PROFILES).map(p=>({p,d:prog[p].done.length}));
   const max=Math.max(...counts.map(c=>c.d));
   const wk=Math.floor(max/5);
-  document.getElementById('hero-txt').textContent=HTXT[Math.min(wk,4)];
+  document.getElementById('hero-txt').textContent=HTXT[Math.min(wk,8)];
   const leaders=counts.filter(c=>c.d===max&&c.d>0);
   let rt='Ingen har startet — hvem tager første skridt?';
   if(max>0){
