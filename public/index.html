@@ -384,15 +384,19 @@ const QZ=[
 
 const HTXT=["30 minutter om dagen. 4 uger. Far, Lucca og Søren — sammen.","I er i gang! Husk: 30 min hver dag.","Halvvejs! Uge 3 handler om AI direkte på jeres PC.","Kun én uge tilbage — kode og fremtiden venter!","🏆 I har gennemført hele forløbet!"];
 
-let cp='far', cw=0, aKey=localStorage.getItem('apiKey')||'', cQuiz={set:0,idx:0,ans:false,score:0};
+let cp='far', cw=0, aKey='', cQuiz={set:0,idx:0,ans:false,score:0};
 let cHist={far:[],lucca:[],soren:[]};
-let prog={far:{done:[],quizDone:0,chatCount:0},lucca:{done:[],quizDone:0,chatCount:0},soren:{done:[],quizDone:0,chatCount:0}};
+let prog={far:{done:[],quizDone:0,chatCount:0},lucca:{done:[],quizDone:0,chatCount:0},soren:{done:[],quizDone:0,chatCount:0},apiKey:''};
+let progLoaded=false;
 
 async function loadProg(){
-  try{const r=await fetch('/api/progress');if(r.ok){const d=await r.json();if(!d.soren)d.soren={done:[],quizDone:0,chatCount:0};prog=d;updStats();}}
+  try{const r=await fetch('/api/progress');if(r.ok){const d=await r.json();['far','lucca','soren'].forEach(p=>{if(!d[p])d[p]={done:[],quizDone:0,chatCount:0};});prog=d;aKey=d.apiKey||'';}}
   catch(e){}
+  progLoaded=true;
+  updStats();updKeyStatus();
+  document.getElementById('no-key').style.display=aKey?'none':'block';
 }
-async function saveProg(){try{await fetch('/api/progress',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(prog)});}catch(e){}}
+async function saveProg(){if(!progLoaded)return;prog.apiKey=aKey;try{await fetch('/api/progress',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(prog)});}catch(e){}}
 
 function updStats(){
   Object.keys(PROFILES).forEach(p=>{
@@ -494,12 +498,12 @@ function toggleDay(k,who){
 function saveKey(){
   const k=document.getElementById('api-inp').value.trim();
   if(!k.startsWith('sk-ant-')){document.getElementById('api-st').textContent='Ugyldig (skal starte med sk-ant-)';document.getElementById('api-st').className='api-st err';return;}
-  aKey=k;localStorage.setItem('apiKey',k);
+  aKey=k;saveProg();
   document.getElementById('api-inp').value='';
   document.getElementById('api-st').textContent='✓ Gemt!';document.getElementById('api-st').className='api-st ok';
   updKeyStatus();
 }
-function delKey(){aKey='';localStorage.removeItem('apiKey');document.getElementById('api-st').textContent='Slettet.';document.getElementById('api-st').className='api-st err';updKeyStatus();}
+function delKey(){aKey='';saveProg();document.getElementById('api-st').textContent='Slettet.';document.getElementById('api-st').className='api-st err';updKeyStatus();}
 function updKeyStatus(){const el=document.getElementById('key-status');el.innerHTML=aKey?`<span style="color:var(--teal)">✓ ${aKey.slice(0,10)}...${aKey.slice(-4)}</span>`:`<span style="color:var(--muted)">Ingen nøgle.</span>`;}
 
 function hKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
@@ -597,7 +601,7 @@ function nxtQ(){
   }else{cQuiz.idx++;cQuiz.ans=false;renderQ();}
 }
 
-loadProg();updKeyStatus();
+(async()=>{await loadProg();})();
 </script>
 </body>
 </html>

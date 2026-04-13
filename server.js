@@ -16,7 +16,8 @@ function loadProgress() {
   return {
     far: { done: [], quizDone: 0, chatCount: 0 },
     lucca: { done: [], quizDone: 0, chatCount: 0 },
-    soren: { done: [], quizDone: 0, chatCount: 0 }
+    soren: { done: [], quizDone: 0, chatCount: 0 },
+    apiKey: ''
   };
 }
 
