@@ -189,7 +189,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.9
     <div class="hero">
       <div class="hero-eyebrow">Koehte familien · 2026</div>
       <h1 class="hero-title">Jeres rejse ind i <em>kunstig intelligens</em></h1>
-      <p class="hero-sub" id="hero-txt">30 minutter om dagen. 8 uger. Far, Lucca og Søren — sammen.</p>
+      <p class="hero-sub" id="hero-txt">30 minutter om dagen. 11 uger. Far, Lucca og Søren — sammen.</p>
     </div>
     <div class="race-box">
       <div class="race-title">🏁 Hvem er foran?</div>
@@ -253,7 +253,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.9
 
   <div id="sec-plan" class="section">
     <h2 class="section-title">Læringsplanen</h2>
-    <p class="section-sub">8 uger · 40 dage · 30 min om dagen. Alle sætter kryds på deres egne opgaver.</p>
+    <p class="section-sub">11 uger · 55 dage · 30 min om dagen. Alle sætter kryds på deres egne opgaver.</p>
     <div class="wtabs" id="plan-tabs">
       <button class="wtab a" onclick="showWeek(0)">Uge 1</button>
       <button class="wtab" onclick="showWeek(1)">Uge 2</button>
@@ -263,6 +263,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.9
       <button class="wtab" onclick="showWeek(5)">Uge 6</button>
       <button class="wtab" onclick="showWeek(6)">Uge 7</button>
       <button class="wtab" onclick="showWeek(7)">Uge 8</button>
+      <button class="wtab" onclick="showWeek(8)">Uge 9</button>
+      <button class="wtab" onclick="showWeek(9)">Uge 10</button>
+      <button class="wtab" onclick="showWeek(10)">Uge 11</button>
     </div>
     <div id="week-display"></div>
   </div>
@@ -307,6 +310,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,14,12,0.9
       <button class="wtab" onclick="loadQ(5,this)">Uge 6</button>
       <button class="wtab" onclick="loadQ(6,this)">Uge 7</button>
       <button class="wtab" onclick="loadQ(7,this)">Uge 8</button>
+      <button class="wtab" onclick="loadQ(8,this)">Uge 9</button>
+      <button class="wtab" onclick="loadQ(9,this)">Uge 10</button>
+      <button class="wtab" onclick="loadQ(10,this)">Uge 11</button>
     </div>
     <div id="quiz-area"></div>
   </div>
@@ -391,7 +397,28 @@ const W=[
     {day:"Tirsdag",title:"AI-trends 2026",body:"Søg efter de nyeste AI-nyheder. Hvad er det seneste gennembrud? Diskutér: Hvilken AI-teknologi tror I vil ændre mest i de næste 5 år?",tags:["alle"],links:[{label:"🔍 Søg AI nyheder",url:"https://www.youtube.com/results?search_query=ai+news+2026+dansk"}]},
     {day:"Onsdag",title:"Jeres AI-projekt",body:"Start jeres eget AI-projekt! En chatbot til noget specifikt, en hjemmeside, et spil, eller noget helt fjerde. Claude hjælper jer hele vejen.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
     {day:"Torsdag",title:"Færdiggør projektet",body:"Gør jeres projekt helt færdigt. Test det, ret fejl med Claude, og forbered en kort præsentation: Hvad gør det? Hvorfor lavede I det?",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]},
-    {day:"Fredag",title:"Eksamen bestået! 🏆",body:"I er nu AI-kyndige! 8 uger, 40 dage — tillykke! Spørg Claude: 'Vi har gennemført 8 ugers AI-læring. Hvad anbefaler du som næste skridt?'",tags:["alle"],links:[{label:"💬 Spørg Claude",url:"https://claude.ai"}]}
+    {day:"Fredag",title:"8 uger klaret! 🎉",body:"I har klaret grundforløbet! Kig tilbage på alt I har bygget og lært. De næste 3 uger dykker vi dybere ned i apps, assistenter og rigtige værktøjer.",tags:["alle"],links:[]}
+  ]},
+  {title:"Uge 9 — AI-apps i dybden",desc:"Forstå hvordan rigtige AI-apps virker — fra ide til færdigt produkt.",days:[
+    {day:"Mandag",title:"Anatomi af en AI-app",body:"Denne læringsbog er en AI-app! Den har en server, en database, en frontend og en API-nøgle. Bed Claude forklare: 'Hvad er forskellen på frontend, backend og database?' Tegn det op sammen.",tags:["alle"],links:[{label:"💬 Åbn Claude.ai",url:"https://claude.ai"}]},
+    {day:"Tirsdag",title:"Byg en chatbot med personlighed",body:"Lav en chatbot der opfører sig som en bestemt karakter — en kok, en rumforsker eller en vikingehøvding. Skriv system prompten, test den grundigt, og justér til den er perfekt.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]},
+    {day:"Onsdag",title:"AI + formularer",body:"Bed Claude bygge en hjemmeside med en formular: fx en quiz-generator, en madplan-bestiller, eller et feedback-skema. Formularen skal sende data til en AI der svarer intelligent.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Torsdag",title:"Streaming og brugeroplevelse",body:"Prøv at chatte med Claude — svaret kommer ord for ord. Det hedder 'streaming'. Diskutér: Hvorfor er det bedre end at vente 10 sekunder på hele svaret? Hvad gør en AI-app behagelig at bruge?",tags:["alle"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]},
+    {day:"Fredag",title:"App-idé workshop",body:"Brainstorm 5 AI-app idéer der ville hjælpe jer i hverdagen. Stemm om den bedste. Bed Claude lave en 'produktbeskrivelse' med features og målgruppe.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]}
+  ]},
+  {title:"Uge 10 — AI-assistenter",desc:"Lær om AI-agenter og assistenter der kan udføre opgaver selv — ikke bare svare på spørgsmål.",days:[
+    {day:"Mandag",title:"Hvad er en AI-agent?",body:"En AI-assistent svarer på spørgsmål. En AI-agent kan handle — søge, beregne, kalde funktioner. Bed Claude forklare forskellen. Prøv: 'Hvad er klokken i Tokyo lige nu?' — kan Claude svare?",tags:["alle"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]},
+    {day:"Tirsdag",title:"Claude som kode-assistent",body:"Åbn et projekt i Replit og brug Claude som programmerings-partner. Bed den skrive kode, forklar hvad den gør, find fejl og forbedr den. Mærk forskellen på at copy-paste vs. at samarbejde.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Onsdag",title:"Byg en AI-to-do assistent",body:"Lav en simpel to-do app med AI: Skriv en opgave, og AI'en prioriterer, estimerer tid og foreslår hvornår du skal gøre den. Claude skriver koden — I tester og forbedrer.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Torsdag",title:"AI i professionelle værktøjer",body:"Udforsk hvordan AI er bygget ind i rigtige apps: Notion AI, GitHub Copilot, Canva Magic. Prøv mindst ét gratis værktøj og sammenlign med at gøre det manuelt.",tags:["alle","praksis"],links:[{label:"✨ Notion AI",url:"https://notion.so"},{label:"🎨 Canva",url:"https://canva.com"}]},
+    {day:"Fredag",title:"Design din drømme-assistent",body:"Hvis I kunne bygge den perfekte AI-assistent — hvad skulle den kunne? Skriv en detaljeret beskrivelse: Hvem er den til? Hvad gør den? Hvilke data har den brug for? Præsentér for hinanden.",tags:["alle"],links:[]}
+  ]},
+  {title:"Uge 11 — Mester-niveau",desc:"Sæt det hele sammen — byg en komplet AI-app fra bunden og præsentér den.",days:[
+    {day:"Mandag",title:"Planlæg jeres mester-app",body:"Vælg én af jeres app-idéer fra de sidste uger. Lav en plan med Claude: Hvilke features? Hvilken teknologi? Hvordan ser den ud? Tegn skærmbilleder på papir.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"}]},
+    {day:"Tirsdag",title:"Byg grundstrukturen",body:"Start med det vigtigste: En side der virker med én kernefunktion. Bed Claude bygge HTML, CSS og JavaScript. Test løbende i Replit. Perfekt er fjenden af færdig!",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Onsdag",title:"Tilføj AI-funktioner",body:"Gør jeres app smart: Tilføj en chatbot, en tekst-analysator, en billedgenerator eller noget helt andet. Claude hjælper med at forbinde jeres app til en AI API.",tags:["alle","praksis"],links:[{label:"💬 Claude.ai",url:"https://claude.ai"},{label:"💻 Replit.com",url:"https://replit.com"}]},
+    {day:"Torsdag",title:"Test og polér",body:"Lad en anden i familien teste jeres app uden instruktioner. Hvad er forvirrende? Hvad mangler? Ret de 3 vigtigste ting. God software laves ikke — den forbedres.",tags:["alle","praksis"],links:[]},
+    {day:"Fredag",title:"Afslutning! 🏆🏆🏆",body:"11 uger, 55 dage — I er nu rigtige AI-kyndige! Præsentér jeres mester-app. Spørg Claude: 'Vi har gennemført 11 ugers AI-læring og bygget en app. Hvad er næste niveau?'",tags:["alle"],links:[{label:"💬 Spørg Claude",url:"https://claude.ai"}]}
   ]}
 ];
 
@@ -435,10 +462,25 @@ const QZ=[
    {q:"Hvad er open source AI?",o:["AI der koster penge","AI-modeller alle kan bruge og ændre","Lukket AI","AI kun for firmaer"],a:1,e:"Open source betyder koden er fri — alle kan bruge, studere og forbedre den."},
    {q:"Hvad er fine-tuning?",o:["At gøre AI hurtigere","At tilpasse en AI-model til en specifik opgave","At slette en model","At købe en ny computer"],a:1,e:"Fine-tuning træner en eksisterende model videre med specialiseret data."},
    {q:"Hvad er den vigtigste AI-færdighed?",o:["Programmering i C++","At kommunikere klart med AI","At huske alle modeller","At undgå AI helt"],a:1,e:"Evnen til at formulere gode prompts er den mest værdifulde AI-færdighed."},
-   {q:"Hvad bør I gøre efter dette forløb?",o:["Glemme alt om AI","Blive ved med at eksperimentere","Vente på nye regler","Kun bruge Google"],a:1,e:"AI udvikler sig hurtigt — det bedste I kan gøre er at blive ved med at lære og prøve nyt!"}]
+   {q:"Hvad bør I gøre efter dette forløb?",o:["Glemme alt om AI","Blive ved med at eksperimentere","Vente på nye regler","Kun bruge Google"],a:1,e:"AI udvikler sig hurtigt — det bedste I kan gøre er at blive ved med at lære og prøve nyt!"}],
+  [{q:"Hvad er en backend?",o:["Det man ser på skærmen","Serveren der håndterer data bag kulisserne","En type AI-model","Et designværktøj"],a:1,e:"Backend er den usynlige server der gemmer data, kører logik og taler med databasen."},
+   {q:"Hvad gør en API-nøgle?",o:["Låser computeren","Identificerer dig over for en tjeneste","Gør internettet hurtigere","Krypterer filer"],a:1,e:"En API-nøgle er dit 'password' til en tjeneste — den fortæller hvem der kalder."},
+   {q:"Hvad er streaming i AI-svar?",o:["At se film","At sende hele svaret på én gang","At vise svaret ord for ord efterhånden","At gemme data"],a:2,e:"Streaming sender svaret løbende så brugeren ikke venter — det føles hurtigere og mere naturligt."},
+   {q:"Hvad er en system prompt?",o:["En fejlmeddelelse","Skjult instruktion der styrer AI'ens opførsel","Et password","En database-forespørgsel"],a:1,e:"System prompten definerer AI'ens rolle og regler — brugeren ser den typisk ikke."},
+   {q:"Hvad gør en god AI-app?",o:["Flest mulige knapper","Hurtige, relevante svar og enkel brug","Kun tekst, ingen design","Altid gratis"],a:1,e:"Gode AI-apps kombinerer smart AI med en brugeroplevelse der føles let og naturlig."}],
+  [{q:"Hvad er forskellen på AI-assistent og AI-agent?",o:["Ingen forskel","Assistenten svarer, agenten handler","Agenten er langsommere","Assistenten er nyere"],a:1,e:"En agent kan tage selvstændige handlinger — søge, kalde funktioner, ændre data."},
+   {q:"Hvad er GitHub Copilot?",o:["Et socialt medie","AI-kodeassistent der foreslår kode i editoren","En AI-billedgenerator","En chatbot"],a:1,e:"Copilot sidder direkte i din kodeeditor og foreslår kode mens du skriver."},
+   {q:"Hvad er den bedste måde at bruge AI til kodning?",o:["Copy-paste uden at læse","Samarbejde: forstå og justér AI'ens forslag","Lade AI skrive alt","Aldrig bruge AI til kode"],a:1,e:"AI er bedst som samarbejdspartner — du skal forstå og styre koden."},
+   {q:"Hvad kan Notion AI hjælpe med?",o:["Kun programmering","Skrive, opsummere og organisere tekst","Kun billeder","Kun matematik"],a:1,e:"Notion AI hjælper med at skrive, redigere og strukturere noter og dokumenter."},
+   {q:"Hvad har en AI-agent brug for?",o:["Kun en stor skærm","Adgang til værktøjer og data den kan handle på","Intet specielt","Kun internet"],a:1,e:"Agenter behøver 'tools' — funktioner de kan kalde for at udføre handlinger i den virkelige verden."}],
+  [{q:"Hvad er det vigtigste i app-planlægning?",o:["Flot design fra starten","At vælge én kernefunktion der virker","At have alle features","At bruge den nyeste teknologi"],a:1,e:"Start med det vigtigste — én ting der virker er bedre end ti ting der er halvfærdige."},
+   {q:"Hvad betyder 'MVP'?",o:["Most Valuable Player","Minimum Viable Product — mindste brugbare version","Maximum Virtual Power","En type AI"],a:1,e:"MVP er den enkleste version af dit produkt der stadig giver værdi for brugeren."},
+   {q:"Hvordan tester man bedst en app?",o:["Selv klikke rundt","Lade en anden bruge den uden instruktioner","Kun læse koden","Spørge AI om den er god"],a:1,e:"Brugertests med rigtige mennesker afslører problemer du aldrig selv ville finde."},
+   {q:"Hvad forbinder en app til AI?",o:["Et USB-kabel","En API — app'en sender data, AI'en svarer","Bluetooth","Wifi alene"],a:1,e:"API'er er broen mellem din app og AI-tjenester som Claude — data sendes over internettet."},
+   {q:"Hvad er jeres vigtigste AI-færdighed nu?",o:["At huske modeller","At kunne bygge og eksperimentere med AI-værktøjer","At undgå AI","At kode i Assembly"],a:1,e:"I kan nu forstå, bruge og bygge med AI — det er fundamentet for fremtidens digitale verden."}]
 ];
 
-const HTXT=["30 minutter om dagen. 8 uger. Far, Lucca og Søren — sammen.","I er i gang! Husk: 30 min hver dag.","Uge 2 klaret! Kreativiteten blomstrer.","Uge 3 done! Nu kører AI lokalt på jeres PC.","Halvvejs! 4 uger i hus — de næste 4 bliver endnu bedre!","Uge 5 klaret! I forstår nu AI og etik.","Uge 6 done! I er promptmestre nu.","Uge 7 i hus! I bygger allerede med AI.","🏆 I har gennemført hele forløbet — 8 uger, 40 dage!"];
+const HTXT=["30 minutter om dagen. 11 uger. Far, Lucca og Søren — sammen.","I er i gang! Husk: 30 min hver dag.","Uge 2 klaret! Kreativiteten blomstrer.","Uge 3 done! Nu kører AI lokalt på jeres PC.","4 uger i hus! Grundlaget er på plads.","Uge 5 klaret! I forstår nu AI og etik.","Uge 6 done! I er promptmestre nu.","Uge 7 i hus! I bygger allerede med AI.","8 uger klaret! Nu dykker vi ned i apps.","Uge 9 done! I forstår AI-apps indefra.","Uge 10 i hus! I kender AI-assistenter og agenter.","🏆 I har gennemført hele forløbet — 11 uger, 55 dage!"];
 
 let cp='far', cw=0, aKey='', cQuiz={set:0,idx:0,ans:false,score:0};
 let cHist={far:[],lucca:[],soren:[]};
@@ -461,13 +503,13 @@ function updStats(){
     document.getElementById(s+'-days').textContent=d;
     document.getElementById(s+'-quiz').textContent=q;
     document.getElementById(s+'-chat').textContent=c;
-    document.getElementById('r'+s).style.width=(d/40*100)+'%';
-    document.getElementById('rn-'+p).textContent=d+'/40';
+    document.getElementById('r'+s).style.width=(d/55*100)+'%';
+    document.getElementById('rn-'+p).textContent=d+'/55';
   });
   const counts=Object.keys(PROFILES).map(p=>({p,d:prog[p].done.length}));
   const max=Math.max(...counts.map(c=>c.d));
   const wk=Math.floor(max/5);
-  document.getElementById('hero-txt').textContent=HTXT[Math.min(wk,8)];
+  document.getElementById('hero-txt').textContent=HTXT[Math.min(wk,11)];
   const leaders=counts.filter(c=>c.d===max&&c.d>0);
   let rt='Ingen har startet — hvem tager første skridt?';
   if(max>0){
